@@ -1,4 +1,5 @@
 from random import random
+
 a=float(input("Enter first number "))
 b=float(input("Enter Second number "))
 def sum(a,b):
@@ -20,18 +21,17 @@ print(f"div is {res3}")
 
 
 
-#Write function to calculate square of a number;
+# #Write function to calculate square of a number;
 
 a=int(input("Enter your number "))
 def square(a):
     return a*a
-
 print(square(a))
 
 #Create dice-rolling simulator with random module;
 dice = int(random() * 6) +1
-
 print("dice-rolling:", dice)
+
 #palindrome
 num = 0
 temp = 0
@@ -48,6 +48,35 @@ if num==sum:
 else:
     print("Not a palindrome")
 
+#Build a number-guessing game using functions and random module
+try:
+    def userInput():
+        guess = int(input("Enter any number from 1 to 6: "))
+        return guess
+    guess = userInput()
+    actualNumber = int(random() * 6) + 1
+    if guess <= 0 or guess > 6:
+        print("Please enter a number between 1 and 6.")
+    elif guess == actualNumber:
+        print("won")
+    else:
+        print(f"failed!number was {actualNumber}")
+except ValueError:
+        print("Please enter a valid number.")
 
+#password
+special = "!@#$%^&*"
+password = input("Enter password: ")
+found = False
+for i in password:
+    if i in special:
+        found = True
+        break
+if len(password) != 8:
+    print("Password must be exactly 8 characters.")
+elif found:
+    print("Login...")
+else:
+    print("Password must contain at least one special character.")
 
 

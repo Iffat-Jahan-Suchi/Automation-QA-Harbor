@@ -1,19 +1,13 @@
 amount = float(input("Enter any number: "))
-
-# Floating point problem এড়ানোর জন্য সবকিছু cent এ convert করছি
 amount = round(amount * 100)
-
 notes = [100, 50, 20, 10, 5, 2]
 coins = [100, 50, 25, 10, 5, 1]
-
 print("NOTAS:")
-
 for note in notes:
     value = note * 100
     count = amount // value
     print(f"{count} nota(s) de R$ {note}.00")
     amount %= value
-
 print("MOEDAS:")
 
 for coin in coins:

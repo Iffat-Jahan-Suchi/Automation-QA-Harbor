@@ -36,6 +36,38 @@ def test_invalid_password():
     error=page.locator("//h3[@data-test='error']")
     assert error.text_content() == "Epic sadface: Username and password do not match any user in this service"
 
+def test_sortName():
+    with sync_playwright() as p:
+        browser = p.chromium.launch(headless=False)
+        page = browser.new_page()
+        page.goto("https://www.saucedemo.com/?utm_source=chatgpt.com")
+        login_locator(page, "standard_user", "secret_sauce")
+        page.locator(".product_sort_container").click()
+        page.wait_for_timeout(5000)
+        page.locator(".product_sort_container").select_option("za")
+        names=page.locator(".product_sort_container").all_text_contents()
+        assert names==sorted(names,reverse=True)
+def test_priceLowToHigh():
+    with sync_playwright() as p:
+        browser = p.chromium.launch(headless=False)
+        page = browser.new_page()
+        page.goto("https://www.saucedemo.com/?utm_source=chatgpt.com")
+        login_locator(page, "standard_user", "secret_sauce")
+        page.locator(".product_sort_container").click()
+        page.locator(".product_sort_container").select_option("lohi")
+        expect(page.locator(".product_sort_container")).to_have_value("lohi")
+def test_priceHighToLow():
+    with sync_playwright() as p:
+        browser = p.chromium.launch(headless=False)
+        page = browser.new_page()
+        page.goto("https://www.saucedemo.com/?utm_source=chatgpt.com")
+        login_locator(page, "standard_user", "secret_sauce")
+        page.locator(".product_sort_container").click()
+        page.locator(".product_sort_container").select_option("hilo")
+        expect(page.locator(".product_sort_container")).to_have_value("hilo")
+
+
+
 def test_cartItem():
  with sync_playwright() as p:
     browser=p.chromium.launch(headless=False)

@@ -13,17 +13,5 @@ print("MOEDAS:")
 for coin in coins:
     val=coin*100
     count = amount // val
-    if val == 100:
-        print(f"{count} moeda(s) de R$ 1.00")
-    elif val == 50:
-        print(f"{count} moeda(s) de R$ 0.50")
-    elif val == 25:
-        print(f"{count} moeda(s) de R$ 0.25")
-    elif val == 10:
-        print(f"{count} moeda(s) de R$ 0.10")
-    elif val == 5:
-        print(f"{count} moeda(s) de R$ 0.05")
-    else:
-        print(f"{count} moeda(s) de R$ 0.01")
-
+    print(f"{count} nota(s) de R$ {coin}.00")
     amount%=val

@@ -13,5 +13,5 @@ print("MOEDAS:")
 for coin in coins:
     val=coin*100
     count = amount // val
-    print(f"{count} nota(s) de R$ {coin}.00")
+    print(f"{count} moeda(s) de R$ {coin}.00")
     amount%=val

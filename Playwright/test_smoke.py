@@ -19,6 +19,7 @@ def test_smoke():
         products[0].locator("button:has-text('Add to cart')").click()
         products[1].locator("button:has-text('Add to cart')").click()
         page.locator(".shopping_cart_link").click()
+        page.wait_for_timeout(3000)
         page.locator("#checkout").click()
         page.locator("#first-name").fill("iffat")
         page.locator("#last-name").fill("jahan")
